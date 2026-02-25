@@ -6,8 +6,7 @@ import { useRef } from 'react';
 
 const Hero = () => {
   const videoRef = useRef();
-  const videoTimelineRef = useRef();
-  const isMobile = useMediaQuery({query: '(max-width: 768px)'});
+  const isMobile = useMediaQuery({maxWidth: 767});
 
   useGSAP(() => {
     const heroSplit = new SplitText('.title', {type :'chars, words'});
@@ -41,6 +40,7 @@ const Hero = () => {
     })
     .to('.right-leaf', {y: 200}, 0)
     .to('.left-leaf', {y: -200}, 0)
+    .to('.arrow', {y: 100}, 0)
 
     const startValue = isMobile ? 'top 50%' : 'center 60%';
     const endValue = isMobile ? '120% top' : 'bottom top';
@@ -52,7 +52,6 @@ const Hero = () => {
         end: endValue,
         scrub: true,
         pin: true,
-
       }
     })
 
